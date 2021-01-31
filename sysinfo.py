@@ -2,10 +2,11 @@
 # Get sysinfo and print for BPQ reporting
 
 import os
-import time
 import platform
-import distro
+import time
+
 import cpuinfo
+import distro
 import psutil
 import uptime
 
@@ -61,7 +62,7 @@ def format_time(time):
 def mb_to_gb(mb):
     """
     Convert megabytes to gigabytes.
-    :param kb: integer denoting megabytes.
+    :param mb: integer denoting megabytes.
     :return: integer denoting gigabytes.
     """
 
@@ -73,7 +74,8 @@ def mb_to_gb(mb):
 print("============================================================================")
 print(f"This system has {cpu_count} {arch}-bit {processor_name} cores.")
 print(f"The operating system is: {os_name} version {os_version}.")
-print("----------------------------------------------------------------------------")
+print(
+    "----------------------------------------------------------------------------")
 print(f"The current CPU usage is: {cpu_usage}%")
 print(f"The current memory usage is: {mem_usage}%")
 print(f"The total memory is: {mb_to_gb(total_mem)} GB.")
@@ -82,7 +84,12 @@ print(f"The current swap usage is: {swap_usage}%.")
 print(f"The total swap size is: {mb_to_gb(swap_size)} GB.")
 print(f"The free swap available is {mb_to_gb(available_swap)} GB.")
 print(f"System uptime: {format_time(uptime)}")
-print("============================================================================")
+print(
+    "============================================================================")
+print(
+    "Want this script?\nGo to https://www.kd5lpb.com/monitoring-system-stats-via-bpq-python/")
+print(
+    "============================================================================")
 
 start_time = time.time()
 while True:
