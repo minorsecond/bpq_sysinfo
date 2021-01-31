@@ -3,6 +3,7 @@
 
 import os
 import platform
+import shutil
 import time
 
 import cpuinfo
@@ -30,6 +31,7 @@ uptime = uptime.uptime()
 swap_usage = psutil.swap_memory().percent
 swap_size = psutil.swap_memory().total >> 20
 available_swap = psutil.swap_memory().free >> 20
+total_disk_space, used_disk_space, free_disk_space = shutil.disk_usage("/")
 
 
 def format_time(time):
@@ -84,6 +86,11 @@ print(f"The current swap usage is: {swap_usage}%.")
 print(f"The total swap size is: {mb_to_gb(swap_size)} GB.")
 print(f"The free swap available is {mb_to_gb(available_swap)} GB.")
 print(f"System uptime: {format_time(uptime)}")
+print(
+    "----------------------------------------------------------------------------")
+print(f"Available disk space: {free_disk_space // (2 ** 30)} GiB.")
+print(f"Total disk space: {total_disk_space // (2 ** 30)} GiB.")
+print(f"Used disk space: {used_disk_space // (2 ** 30)} GiB.")
 print(
     "============================================================================")
 print(
