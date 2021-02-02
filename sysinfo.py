@@ -22,7 +22,7 @@ else:
 processor_name = cpuinfo.get_cpu_info()['brand_raw']
 os_name = distro.linux_distribution()[0]
 os_version = distro.linux_distribution()[1]
-cpu_usage = psutil.cpu_percent()
+cpu_usage = psutil.cpu_percent(interval=0.5)
 mem_usage = psutil.virtual_memory().percent
 total_mem = psutil.virtual_memory().total >> 20
 available_mem = psutil.virtual_memory().available >> 20
