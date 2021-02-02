@@ -8,6 +8,7 @@ import time
 import cpuinfo
 import distro
 import psutil
+import speedtest
 import uptime
 
 pause_time = 1
@@ -35,6 +36,14 @@ disk_size = round(disk.total / (1024 ** 3), 2)
 disk_used = round(disk.used / (1024 ** 3), 2)
 disk_free = round(disk.free / (1024 ** 3), 2)
 disk_percent = disk.percent
+
+print("Calculating internet speeds & latency...")
+st = speedtest.Speedtest()
+dl_speed = round(st.download() * 0.000001, 2)
+ul_speed = round(st.upload() * 0.000001, 2)
+server_names = []
+st.get_servers(server_names)
+ping = st.results.ping
 
 
 def format_time(time):
@@ -95,6 +104,11 @@ print(f"Available disk space on root partition: {disk_free} GiB.")
 print(f"Total disk space on root partition: {disk_size} GiB.")
 print(f"Used disk space on root partition: {disk_used} GiB.")
 print(f"Disk percentage used on root partition: {disk_percent}%.")
+print(
+    "----------------------------------------------------------------------------")
+print(f"The current download speed is {dl_speed} Mb/s.")
+print(f"The current upload speed is {ul_speed} Mb/s.")
+print(f"Latency: {ping} ms.")
 print(
     "============================================================================")
 print(
