@@ -3,3 +3,4 @@ distro
 psutil
 py-cpuinfo
 uptime==3.0.1
+speedtest-cli
