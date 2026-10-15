@@ -112,7 +112,7 @@ print(f"Disk percentage used on root partition: {disk_percent}%.")
 print(
     "============================================================================")
 print(
-    "Want this script?\nGo to https://www.kd5lpb.com/monitoring-system-stats-via-bpq-python/")
+    "Want this script?\nIt is at https://github.com/minorsecond/bpq_sysinfo")
 print(
     "============================================================================")
 
