@@ -147,6 +147,17 @@ def get_44net():
     return None
 
 
+def get_rx_health():
+    """One line from hampi-rxhealth about whether the receiver is hearing
+    as much as it usually does at this hour (None if the tool is missing)."""
+    try:
+        out = subprocess.run(["/home/rwardrup/ham-pi-setup/hampi-rxhealth", "line"],
+                             capture_output=True, text=True, timeout=5).stdout.strip()
+        return out or None
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+
+
 def human_bytes(n):
     """
     Format a byte count with a short unit.
@@ -256,6 +267,9 @@ if eth is not None:
     print(f"eth0: rx {human_bytes(eth.bytes_recv)} tx {human_bytes(eth.bytes_sent)}")
 if amprnet is not None:
     print(f"44Net: {amprnet}")
+rx_health = get_rx_health()
+if rx_health is not None:
+    print(rx_health)
 #print(f"The current download speed is {dl_speed} Mb/s.")
 #print(f"The current upload speed is {ul_speed} Mb/s.")
 #print(f"Latency: {ping} ms.")
